@@ -15,5 +15,3 @@ server
 ehthumbs.db
 Thumbs.db
 
-# Environment variables (just in case)
-.env
