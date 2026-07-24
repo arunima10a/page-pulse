@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Page Pulse — Live vitals for any webpage</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600;700&family=IBM+Plex+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <div class="scanline-overlay" aria-hidden="true"></div>
+
+  <div class="page">
+
+    <!-- Brand bar -->
+    <header class="brandbar">
+      <div class="brand">
+        <svg class="brand-icon" viewBox="0 0 32 32" aria-hidden="true">
+          <path d="M4 16 H10 L13 6 L18 26 L21 16 H28" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+        <span class="brand-word">Page Pulse</span>
+      </div>
+      <span class="brand-tag">SEO &amp; performance vitals</span>
+    </header>
+
+    <main>
+      <!-- Monitor / hero -->
+      <section class="monitor" aria-label="URL audit console">
+        <div class="screen">
+
+          <div class="ecg-strip" id="ecgStrip" aria-hidden="true">
+            <svg class="ecg-track" viewBox="0 0 600 60" preserveAspectRatio="none">
+              <path class="ecg-path" d="M0,30 L40,30 L52,30 L58,10 L64,50 L70,30 L84,30 L600,30" />
+            </svg>
+            <svg class="ecg-track" viewBox="0 0 600 60" preserveAspectRatio="none">
+              <path class="ecg-path" d="M0,30 L40,30 L52,30 L58,10 L64,50 L70,30 L84,30 L600,30" />
+            </svg>
+          </div>
+
+          <div class="screen-body">
+            <div class="lede">
+              <h1>Check any page's&nbsp;vital&nbsp;signs.</h1>
+              <p>Enter a URL to read its status, structure, and accessibility — in seconds.</p>
+            </div>
+
+            <div class="admit-row">
+              <div class="field">
+                <label for="targetUrl">Target URL</label>
+                <input type="url" id="targetUrl" placeholder="https://example.com" autocomplete="off" spellcheck="false">
+              </div>
+              <button id="auditBtn" type="button">
+                <span class="btn-label">Run scan</span>
+                <span class="btn-spinner" aria-hidden="true"></span>
+              </button>
+            </div>
+
+            <div class="status-row">
+              <span class="led" id="ledIndicator"></span>
+              <span class="status-text" id="statusText">Standby — waiting for a URL</span>
+            </div>
+
+            <p id="errorMessage" class="alert-flatline hidden" role="alert"></p>
+          </div>
+        </div>
+      </section>
+
+      <!-- Results -->
+      <section id="results" class="results hidden" aria-live="polite">
+
+        <div class="vitals-grid">
+          <article class="vital-card">
+            <p class="vital-label">Status</p>
+            <div class="vital-main">
+              <span id="resStatus" class="vital-value">—</span>
+              <svg class="mini-ecg" id="miniEcg" viewBox="0 0 100 32" preserveAspectRatio="none">
+                <path d="M0,16 L34,16 L40,4 L46,28 L52,16 L100,16" />
+              </svg>
+            </div>
+            <p class="vital-sub"><span id="resTime">0</span> ms response time</p>
+          </article>
+
+          <article class="vital-card">
+            <p class="vital-label">Structure</p>
+            <div class="vital-main">
+              <span id="resH1" class="vital-value">0</span>
+            </div>
+            <p class="vital-sub">H1 heading<span id="resH1Plural">s</span> found</p>
+          </article>
+
+          <article class="vital-card">
+            <p class="vital-label">Accessibility</p>
+            <div class="vital-main">
+              <span id="resAlt" class="vital-value">0</span>
+            </div>
+            <p class="vital-sub">image<span id="resAltPlural">s</span> missing alt text</p>
+          </article>
+
+          <article class="vital-card">
+            <p class="vital-label">Content</p>
+            <div class="vital-main">
+              <span id="resWords" class="vital-value">0</span>
+            </div>
+            <p class="vital-sub">words on page</p>
+          </article>
+        </div>
+
+        <div class="readout-card">
+          <p class="vital-label">Metadata readout</p>
+          <dl class="readout-list">
+            <div class="readout-row">
+              <dt>Title ›</dt>
+              <dd id="resTitle">No title found</dd>
+            </div>
+            <div class="readout-row">
+              <dt>Description ›</dt>
+              <dd id="resDesc">No description found</dd>
+            </div>
+          </dl>
+        </div>
+      </section>
+    </main>
+
+    <footer class="sitefoot">
+      <p>Built for <a href="https://digitalheroesco.com" target="_blank" rel="noopener">Digital Heroes Training Task</a></p>
+    </footer>
+  </div>
+
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <script src="script.js"></script>
+</body>
+</html>
