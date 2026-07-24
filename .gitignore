@@ -4,7 +4,6 @@
 *.dll
 *.so
 *.dylib
-server
 
 # OS generated files
 .DS_Store
